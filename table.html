@@ -34,8 +34,8 @@
           {{each item.child item2 i2}}
             {{each item2.child item3 i3}}
               <tr>
-                {{if i2 == 0 && i3 == 0}}<td rowspan="{{item.count}}">{{item.count}}{{item.name}}</td>{{/if}}
-                {{if i3 == 0}}<td rowspan="{{item2.count}}">{{item2.count}}{{item2.name}}</td>{{/if}}
+                {{if i2 == 0 && i3 == 0}}<td rowspan="{{item.count}}">{{item.name}}<br /><span style="font-size: 12px; color: red;">(合并单元格数:{{item.count}})</span></td>{{/if}}
+                {{if i3 == 0}}<td rowspan="{{item2.count}}">{{item2.name}}<br /><span style="font-size: 12px; color: red;">(合并单元格数:{{item2.count}})</span></td>{{/if}}
                 <td>{{item3.name}}</td>
                 <td>{{item3.price}}</td>
                 <td>{{item3.num}}</td>
