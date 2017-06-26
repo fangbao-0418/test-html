@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Object demo</title>
+</head>
+<body>
+  <p>
+    Object.defineProperty()方法定义了一个新的属性直接在一个对象,或修改现有的属性的对象,并返回该对象。
+  </p>
+  <h1>Syntax</h1>
+  <p>
+    Object.defineProperty(obj, prop, descriptor)
+  </p>
+  <script>
+    var obj = {};
+    var name = "fangbao";
+    Object.defineProperty(obj, 'name', {
+      value: 'fangbao',
+      writable: true,
+      // get: function () {
+      //   console.log(arguments, 'get')
+      //   return name;
+      // },
+      // set: function (newvalue) {
+      //   console.log(arguments, 'set');
+      //   name = newvalue
+      //   return name;
+      // }
+    })
+    console.log(obj.name);
+    obj.name = "gaoyanru";
+    console.log(obj.name);
+  </script>
+</body>
+</html>

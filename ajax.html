@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="nav"></div>
+  <script src="./bower_components/jquery/jquery.min.js"></script>
+  <script>
+    $.ajax({
+      url: 'http://47.88.107.203/aclh/Api/Index/shopGoodsType',
+      dataType: 'json',
+      method: 'get'
+    }).success(function (res) {
+      var html = ""
+      for (var i  in res.data) {
+        html += "<span>" + res.data[i]['category_name'] + "</span>";
+      }
+      $('.nav').html(html);
+    })
+  </script>
+</body>
+</html>

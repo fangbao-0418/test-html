@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./bower_components/art-template/lib/template-web.js"></script>
+  <style>
+    #table table {
+      border-right: 1px solid #F00;
+      border-bottom: 1px solid #F00;
+    }
+    #table table tr th, #table table tr td{
+      border-left: 1px solid #F00;
+      border-top: 1px solid #F00;
+      padding: 10px;
+    }
+    </style>
+</head>
+<body>
+  <div id="table">
+    <script id="table-template" type="text/html">
+      <table cellspacing="0" cellpadding="0">
+        <tr>
+          <th>商品性质</th>
+          <th>地区</th>
+          <th>是否加急</th>
+          <th>价格</th>
+          <th>数量</th>
+          <th>商家编码</th>
+        </tr>
+        {{each data item i}}
+          {{each item.child item2 i2}}
+            {{each item2.child item3 i3}}
+              <tr>
+                {{if i2 == 0 && i3 == 0}}<td rowspan="{{item.count}}">{{item.count}}{{item.name}}</td>{{/if}}
+                {{if i3 == 0}}<td rowspan="{{item2.count}}">{{item2.count}}{{item2.name}}</td>{{/if}}
+                <td>{{item3.name}}</td>
+                <td>{{item3.price}}</td>
+                <td>{{item3.num}}</td>
+                <td>{{item3.code}}</td>
+              </tr>
+            {{/each}}
+          {{/each}}
+        {{/each}}
+      </table>
+    </script>
+  </div>
+  <script>
+    var data = [{
+      name: "注册公司",
+      count: 8,
+      child: [{
+        name: "北京",
+        count: 2,
+        child: [{
+          name: "加急",
+          price: 10,
+          num: 20,
+          code: 2001
+        },
+        {
+          name: "不加急",
+          price: 20,
+          num: 20,
+          code: 2001
+        }]
+      },
+      {
+        name: "上海",
+        count: 2,
+        child: [{
+          name: "加急",
+          price: 10,
+          num: 20,
+          code: 2001
+        },
+        {
+          name: "不加急",
+          price: 20,
+          num: 20,
+          code: 2001
+        }]
+      },{
+        name: "吉林",
+        count: 2,
+        child: [{
+          name: "很加急",
+          price: 10,
+          num: 20,
+          code: 2033
+        },
+        {
+          name: "不加急",
+          price: 20,
+          num: 20,
+          code: 2001
+        }]
+      },{
+        name: "辽宁",
+        count: 2,
+        child: [{
+          name: "很加急",
+          price: 10,
+          num: 20,
+          code: 2001
+        },
+        {
+          name: "不加急",
+          price: 20,
+          num: 20,
+          code: 2001
+        }]
+      }]
+    },{
+      name: "非公司",
+      count: 4,
+      child: [{
+        name: "山东",
+        count: 2,
+        child: [{
+          name: "加急",
+          price: 10,
+          num: 20,
+          code: 2001
+        },
+        {
+          name: "不加急",
+          price: 20,
+          num: 20,
+          code: 2021
+        }]
+      },
+      {
+        name: "内蒙",
+        count: 2,
+        child: [{
+          name: "加急",
+          price: 10,
+          num: 20,
+          code: 2001
+        },
+        {
+          name: "不加急",
+          price: 20,
+          num: 20,
+          code: 2001
+        }]
+      }]
+    },{
+      name: "上市公司",
+      count: 1,
+      child: [{
+        name: "杭州",
+        count: 1,
+        child: [{
+          name: "加急",
+          price: 10,
+          num: 20,
+          code: 2001
+        }]
+      }]
+    }];
+    console.log(data);
+    var html = template('table-template', {data: data});
+    console.log(html, 'html');
+    document.getElementById('table').innerHTML = html;
+  </script>
+</body>
+</html>
